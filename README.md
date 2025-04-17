@@ -29,3 +29,5 @@ rhel-8-for-x86_64-sap-solutions-rpms
 rhel-8-for-x86_64-highavailability-rpms
 
 sap-netweaver-for-rhel-8-x86_64-rpms (optional)
+![image alt](https://github.com/benjamenabhijeet/benjamenabhijeet-Enable-RHEL-8.6-Repositories-for-SAP/blob/aae4794badb0639cfa877800d209f4026f21fcdb/enable_repo_for_SAP_system.jpg)
+
