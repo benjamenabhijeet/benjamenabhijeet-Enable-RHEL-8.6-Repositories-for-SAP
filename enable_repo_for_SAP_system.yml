@@ -1,0 +1,33 @@
+---
+- name: Set release to 8.6 and enable SAP + HA repos
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Set RHEL release to 8.6
+      command: subscription-manager release --set=8.6
+
+    - name: Enable BaseOS repo
+      command: subscription-manager repos --enable=rhel-8-for-x86_64-baseos-rpms
+
+    - name: Enable AppStream repo
+      command: subscription-manager repos --enable=rhel-8-for-x86_64-appstream-rpms
+
+    - name: Enable SAP Solutions repo
+      command: subscription-manager repos --enable=rhel-8-for-x86_64-sap-solutions-rpms
+
+    - name: Enable High Availability repo
+      command: subscription-manager repos --enable=rhel-8-for-x86_64-highavailability-rpms
+
+    - name: Enable SAP NetWeaver repo (optional)
+      command: subscription-manager repos --enable="rhel-8-for-x86_64-sap-netweaver-rpms
+
+    - name: Display enabled repos
+      command: yum repolist enabled
+      register: enabled_repos
+      changed_when: false
+
+    - name: Show list of enabled repos
+      debug:
+        msg: "{{ enabled_repos.stdout_lines }}"
